@@ -1,6 +1,8 @@
 
 <div class="page-header">
-  <h1><a href="<%= @post_path %>"><%= @post.title %></a><br> <small>Submitted by <%= @post.user.email %></small></h1>
+  <h1><%= @post.title %></h1><br>
+	<p><%= @post.content %></p>
+  <h4><small>Submitted by <%= @post.user.email %></small></h4>
 </div>
 
 <!-- <div class="btn-group">
@@ -14,3 +16,16 @@
 		<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
 	</div>
 <% end %>
+
+<div class="btn-group pull-right">
+  <%= link_to like_post_path(@post), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-up"></span>
+    Upvote
+    <%= @post.get_upvotes.size %>
+  <% end %>
+  <%= link_to dislike_post_path(@post), method: :put, class: "btn btn-default btn-sm" do %>
+    <span class="glyphicon glyphicon-chevron-down">
+    Downvote
+    <%= @post.get_downvotes.size %>
+  <% end %>
+</div>

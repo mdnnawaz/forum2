@@ -17,6 +17,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.page-header {
+	p {
+		margin-top: 2.5rem;
+		font-weight: 100;
+		font-size: medium;
+	}
+}
+
  #logo {
 	font-size: 26px;
 	font-weight: 700;

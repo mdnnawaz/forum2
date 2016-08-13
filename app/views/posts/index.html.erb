@@ -1,9 +1,24 @@
 <% @posts.each do |post| %>
-  <div class="link row clearfix">
+<div class="link row clearfix">
     <h2>
-      <%= link_to post.title, post %><br>
-      <small class="author">Submitted <%= time_ago_in_words(post.created_at) %> by <%= post.user.email %></small>
+        <%= link_to post.title, post %><br>
+        <small class="author">Submitted
+            <%= time_ago_in_words(post.created_at) %>
+            by
+            <%= post.user.email %></small>
     </h2>
-
-  </div>
-<% end %>
+    <div class="btn-group">
+        <!-- <a class="btn btn-default btn-sm" href="<% posts_path %>">Visit Post</a> -->
+        <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-up"></span>
+        Upvote
+        <%= post.get_upvotes.size %>
+        <% end %>
+        <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+        <span class="glyphicon glyphicon-chevron-down">
+            Downvote
+            <%= post.get_downvotes.size %>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
