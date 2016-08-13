@@ -10,7 +10,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'acts_as_votable', '~> 0.10.0'
-
+gem 'simple_form'
+gem 'record_tag_helper'
 
 
 

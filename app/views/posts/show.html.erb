@@ -13,7 +13,7 @@
 <% if @post.user == current_user -%>
 	<div class="btn-group">
 		<%= link_to 'Edit', edit_post_path(@post), class: "btn btn-default" %>
-		<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+		<%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
 	</div>
 <% end %>
 
@@ -29,3 +29,18 @@
     <%= @post.get_downvotes.size %>
   <% end %>
 </div>
+
+<h3 class="comments_title">
+  <%= @post.comments.count %> Comments
+</h3>
+
+<div id="comments">
+  <%= render :partial => @post.comments %>
+</div>
+<%= simple_form_for [@post, Comment.new]  do |f| %>
+  <div class="field">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <br>
+  <%= f.submit "Add Comment", class: "btn btn-primary" %>
+<% end %>
